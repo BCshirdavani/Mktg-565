@@ -4,8 +4,12 @@
 
 
 #  Load the .sav (spss) data file into R
+install.packages('haven')
 library(haven)
-Cell_Data <- read_sav("Documents/MBA/Mktg 565/Project/Cell2Cell_SPSS_Data.sav")
+# code for iMac
+#Cell_Data <- read_sav("Documents/MBA/Mktg 565/Project/Cell2Cell_SPSS_Data.sav")
+# code for MacBook
+Cell_Data <- read_sav("/Users/shymacbook/Documents/R/Mktg-565/Cell2Cell_SPSS_Data.sav")
 
 #  summarize the data
 summary(Cell_Data)
@@ -53,6 +57,11 @@ for (i in 1:71048){
 }
 '''
 
+# examine the CHURNDEP and CHURN columns
+summary(Cell_Data$CHURNDEP)
+hist(Cell_Data$CHURNDEP)
+table(Cell_Data$CHURNDEP)
+table(Cell_Data$CHURN)
 
 
 
