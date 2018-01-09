@@ -30,6 +30,10 @@ head(Cell_Data)[,51:60]
 head(Cell_Data)[,61:70]
 head(Cell_Data)[,71:ColSize]
 
+# Find missing data "NA" by columns
+MissingReport <- data.frame(Columns,x)
+colnames(MissingReport) <- c("Columns","NA_Count")
+
 #  clean the data (remove any rows with NA column values)
 Cell_naOMIT <- na.omit(Cell_Data)
 
@@ -63,7 +67,14 @@ hist(Cell_Data$CHURNDEP)
 table(Cell_Data$CHURNDEP)
 table(Cell_Data$CHURN)
 
+sum(is.na(Cell_Data[,1]))
+sum(is.na(Cell_Data$CHURNDEP))
 
+x <- rep(0,ColSize)
+for (i in 1:ColSize){
+  x[i] <- sum(is.na(Cell_Data[,i]))
+  print(x)
+}
 
 
 
