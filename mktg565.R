@@ -16,6 +16,12 @@ summary(Cell_Data)
 
 #  view the structure of the data
 str(Cell_Data)
+#  identify columns that are not useful
+Worthless <- c("INCMISS","SETPRCM","CHURNDEP")
+#  identify column that we want to predict
+Y_dependent <- "CHURN"
+#  identify profitability metrics that we want to maximize
+Profit_metrics <- c("REVENUE","REFER")
 
 #  preview the data
 Columns <- colnames(Cell_Data)
@@ -60,6 +66,10 @@ for (i in 1:71048){
    }
 }
 '''
+# double check validation vs. calibration sample
+Cell_Data$CALIBRAT[1:10]
+Cell_Data$CHURNDEP[1:10]
+table(Cell_Data[,c(77,78)],exclude=NULL)
 
 # examine the CHURNDEP and CHURN columns
 summary(Cell_Data$CHURNDEP)
